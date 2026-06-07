@@ -23,6 +23,16 @@ Planbridge treats a planning board as the human-facing operating surface and
 GitHub as the durable technical substrate. Agents then reconcile both sides
 through stable identifiers, API snapshots, and explicit run logs.
 
+The deeper need is cross-ecosystem synchronization: Microsoft, Google
+Workspace, GitHub, agent platforms, and hyperscaler services all expose useful
+planning and execution primitives, but they do not naturally share one durable
+coordination layer.
+
+Planbridge uses GitHub as that shared layer. It gives agents from different
+ecosystems a common place to inspect work, preserve history, coordinate changes,
+and action tasks. In the Empathos QBrain direction, agent action can be driven
+by extracted planning context rather than by manually duplicated task state.
+
 ## Core idea
 
 ```text
@@ -50,6 +60,7 @@ identifiers, manifest format, and verification rules.
 - Mapping between planning-board stages and GitHub Project fields.
 - Synchronization between Microsoft planning surfaces and GitHub Projects.
 - A path toward multi-ecosystem planning bridges, including Google Workspace.
+- Cross-ecosystem coordination for agents, platforms, and hyperscaler services.
 - Backup and version-control posture for planning state through GitHub records.
 - Reconciliation reports for missing, duplicate, or mismatched records.
 - Run logs that show what an agent read, compared, and changed.
