@@ -1,16 +1,17 @@
 # Planbridge
 
-Planbridge is a framework for connecting human planning boards to durable GitHub
-project surfaces that agents can read, reconcile, and maintain.
+Planbridge is an early-stage framework for building a larger collaborative
+surface across planning ecosystems, GitHub project infrastructure, and agent
+runtimes.
 
 The goal is simple: keep planning lightweight for humans while giving technical
 systems a versioned, inspectable control surface.
 
-Planbridge is designed to unify planning between the Microsoft ecosystem,
-GitHub Projects, and agent runtimes such as OpenClaw, Hermes, and Pi Agent. It
-turns planning data into a collaborative surface where humans and agents can
-coordinate through API-backed synchronization, project-state versioning, and
-readable proof logs.
+Planbridge starts with the Microsoft ecosystem and GitHub Projects, but the
+larger direction includes Google Workspace, other planning tools, and agent
+runtimes such as OpenClaw, Hermes, and Pi Agent. It turns planning data into a
+collaborative surface where humans and agents can coordinate through API-backed
+synchronization, project-state versioning, and readable proof logs.
 
 ## Why it exists
 
@@ -48,6 +49,7 @@ identifiers, manifest format, and verification rules.
 - Stable task identity across planning boards and GitHub.
 - Mapping between planning-board stages and GitHub Project fields.
 - Synchronization between Microsoft planning surfaces and GitHub Projects.
+- A path toward multi-ecosystem planning bridges, including Google Workspace.
 - Backup and version-control posture for planning state through GitHub records.
 - Reconciliation reports for missing, duplicate, or mismatched records.
 - Run logs that show what an agent read, compared, and changed.
