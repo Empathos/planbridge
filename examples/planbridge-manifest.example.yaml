@@ -10,7 +10,7 @@ identity:
   parent_suffix: ".000"
 
 planning:
-  provider: microsoft-graph-planner
+  provider: fixture
   tenant: "${GRAPH_TENANT_ID}"
   group_id: "00000000-0000-0000-0000-000000000000"
   boards:
@@ -40,14 +40,23 @@ logging:
   directory: "logs/planbridge"
   write_latest: true
 
+stage_aliases:
+  "AW1 Projectized / Active Working": "AW1 Projectized / Active Working"
+
+projectization:
+  trigger_stages:
+    - "AW1"
+    - "Projectized / Active Working"
+    - "AW1 Projectized / Active Working"
+
 mutation_policy:
   default: read_only
   allowed:
     - github_project_stage_update
+    - projectize_parent_to_focused_surface
   stop_on:
     - duplicate_identifier
     - missing_identifier
     - missing_field
     - missing_stage_option
     - remote_read_failure
-

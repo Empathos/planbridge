@@ -1,0 +1,41 @@
+{
+  "planning": {
+    "tasks": [
+      {
+        "id": "planning-parent-1",
+        "title": "[AW1.001.000] Example workflow automation",
+        "stage": "AW1 Projectized / Active Working",
+        "checklist": [
+          {
+            "title": "Define manifest contract"
+          },
+          {
+            "title": "Create provider adapters"
+          },
+          {
+            "title": "Run proof-log eval"
+          }
+        ]
+      },
+      {
+        "id": "planning-existing-child",
+        "title": "[AW1.001.001] Define manifest contract",
+        "stage": "Doing"
+      }
+    ]
+  },
+  "github": {
+    "items": [
+      {
+        "id": "github-parent-1",
+        "title": "[AW1.001.000] Example workflow automation",
+        "stage": "AW1 Projectized / Active Working"
+      },
+      {
+        "id": "github-existing-child",
+        "title": "[AW1.001.001] Define manifest contract",
+        "stage": "Ready"
+      }
+    ]
+  }
+}

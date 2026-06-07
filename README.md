@@ -107,6 +107,9 @@ agent can reason about the work, but the bridge verifies the state.
 │   ├── identifiers.md
 │   └── planbridge-agent-flow.canvas
 ├── examples/
+│   ├── fixtures/
+│   │   ├── aligned.json
+│   │   └── aw1-projectization.json
 │   └── planbridge-manifest.example.yaml
 ├── scripts/
 │   └── planbridge_reconciler.py
@@ -117,8 +120,25 @@ agent can reason about the work, but the bridge verifies the state.
 
 ## Current status
 
-Planbridge is early. This repository starts with the public framework: docs,
-standards, an example manifest, an agent skill, and a safe reconciler skeleton.
+Planbridge is early, but the public reconciler is no longer a toy skeleton. It
+has a fixture-backed engine that can validate manifests, compare planning and
+GitHub-style records by identifier, detect stage drift, plan approved actions,
+apply those actions to an offline fixture snapshot, read the result back, and
+write proof logs.
+
+Run the public-safe evals:
+
+```bash
+python3 scripts/planbridge_reconciler.py --validate-manifest
+python3 scripts/planbridge_reconciler.py --fixture examples/fixtures/aligned.json --summary
+python3 scripts/planbridge_reconciler.py --fixture examples/fixtures/aw1-projectization.json --dry-run --summary
+python3 scripts/planbridge_reconciler.py --fixture examples/fixtures/aw1-projectization.json --apply --summary
+```
+
+The fixture provider is intentionally synthetic. Real deployments should supply
+provider adapters for their planning API and durable surface, then keep live
+manifests, credentials, project IDs, and proof logs in a private control-plane
+repository.
 
 Live credentials, private board IDs, private agent configuration, and
 environment-specific paths do not belong in this public repository.

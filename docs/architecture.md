@@ -54,6 +54,13 @@ The agent runtime performs reconciliation:
 
 The runtime can be CI, a local operator script, or another agent harness.
 
+The public repository ships a fixture provider so the reconciliation engine can
+be tested without live Microsoft, GitHub, or customer data. Production use
+should add provider adapters at the boundary: one adapter reads the human
+planning surface, one adapter reads and writes the durable surface, and the
+shared engine handles identity parsing, diffing, mutation gates, readback, and
+proof logs.
+
 ### Browser Use, Computer Use, and API Use
 
 These are different integration layers:
@@ -119,3 +126,7 @@ Recommended order:
 3. Missing mirror creation.
 4. Projectization of promoted parent tasks.
 5. Bidirectional repair only after conflict rules are mature.
+
+The public fixture engine currently demonstrates steps 1, 2, and a public-safe
+version of step 4 offline. It does not contain live tenant IDs, project IDs,
+credential paths, or deployment-specific automation.

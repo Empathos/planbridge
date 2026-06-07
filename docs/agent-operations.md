@@ -54,3 +54,17 @@ the same manifest and logging contract. Examples:
 - CI validates manifest and docs
 
 GitHub becomes the shared durable surface between these systems.
+
+## Public Fixture Eval
+
+Public development should start with the fixture provider:
+
+```bash
+python3 scripts/planbridge_reconciler.py --validate-manifest
+python3 scripts/planbridge_reconciler.py --fixture examples/fixtures/aligned.json --summary
+python3 scripts/planbridge_reconciler.py --fixture examples/fixtures/aw1-projectization.json --dry-run --summary
+python3 scripts/planbridge_reconciler.py --fixture examples/fixtures/aw1-projectization.json --apply --summary
+```
+
+The fixture path is the public eval lane. Live provider adapters and operational
+manifests belong in a private deployment/control-plane repository.

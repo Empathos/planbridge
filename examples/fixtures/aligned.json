@@ -1,0 +1,30 @@
+{
+  "planning": {
+    "tasks": [
+      {
+        "id": "planning-1",
+        "title": "[TG1.001.000] Example parent task",
+        "stage": "Ready"
+      },
+      {
+        "id": "planning-2",
+        "title": "[TG1.001.001] Example child task",
+        "stage": "Doing"
+      }
+    ]
+  },
+  "github": {
+    "items": [
+      {
+        "id": "github-1",
+        "title": "[TG1.001.000] Example parent task",
+        "stage": "Ready"
+      },
+      {
+        "id": "github-2",
+        "title": "[TG1.001.001] Example child task",
+        "stage": "Doing"
+      }
+    ]
+  }
+}
