@@ -6,6 +6,12 @@ project surfaces that agents can read, reconcile, and maintain.
 The goal is simple: keep planning lightweight for humans while giving technical
 systems a versioned, inspectable control surface.
 
+Planbridge is designed to unify planning between the Microsoft ecosystem,
+GitHub Projects, and agent runtimes such as OpenClaw, Hermes, and Pi Agent. It
+turns planning data into a collaborative surface where humans and agents can
+coordinate through API-backed synchronization, project-state versioning, and
+readable proof logs.
+
 ## Why it exists
 
 Planning tools are good at human coordination. GitHub is good at durable records,
@@ -41,6 +47,8 @@ identifiers, manifest format, and verification rules.
 
 - Stable task identity across planning boards and GitHub.
 - Mapping between planning-board stages and GitHub Project fields.
+- Synchronization between Microsoft planning surfaces and GitHub Projects.
+- Backup and version-control posture for planning state through GitHub records.
 - Reconciliation reports for missing, duplicate, or mismatched records.
 - Run logs that show what an agent read, compared, and changed.
 - Conservative mutation gates for agent-maintained project surfaces.
