@@ -3,6 +3,14 @@
 Planbridge is API-first. The useful abstraction is not a board clone; it is a
 verified bridge between two authoritative surfaces.
 
+That distinction matters. Browser-use agents can operate a web app, and
+computer-use agents can operate a desktop, but those approaches observe the UI
+rather than the underlying project state. Planbridge uses APIs because the API
+can expose stable identifiers, field IDs, versions, concurrency controls, and
+readback results.
+
+The UI is for people. The API is for synchronization.
+
 ## Planning API
 
 For Microsoft Planner, the bridge normally reads through Microsoft Graph:
@@ -64,6 +72,12 @@ approved diff
   -> verified proof log
 ```
 
+## Agent Boundary
+
+Agents may use probabilistic reasoning to extract intent, explain drift, or
+choose which approved repair to run. They should not guess remote state. Remote
+state comes from API reads, and successful mutation comes from readback proof.
+
 ## Failure Handling
 
 Stop mutation when:
@@ -74,4 +88,3 @@ Stop mutation when:
 - a field or field option cannot be resolved
 - a previous run is still active
 - the manifest is invalid
-

@@ -33,6 +33,13 @@ ecosystems a common place to inspect work, preserve history, coordinate changes,
 and action tasks. In the Empathos QBrain direction, agent action can be driven
 by extracted planning context rather than by manually duplicated task state.
 
+Planbridge is intentionally API-first. It is not a browser-use agent that clicks
+through web boards, and it is not a computer-use agent that treats the desktop as
+the source of truth. Browser and computer control are useful fallbacks for
+interfaces that do not expose enough structure, but planning synchronization
+needs authoritative state, repeatable writes, and auditable readback. APIs make
+that possible.
+
 ## Core idea
 
 ```text
@@ -54,6 +61,12 @@ The bridge does not depend on one agent runtime. Local scripts, CI jobs, and
 external agent systems can all participate as long as they follow the same
 identifiers, manifest format, and verification rules.
 
+Planbridge combines deterministic and probabilistic workflows. The deterministic
+side owns identifiers, manifests, API reads, mutation gates, concurrency checks,
+and proof logs. The probabilistic side helps interpret planning context,
+recommend next actions, summarize drift, and coordinate work across tools. The
+agent can reason about the work, but the bridge verifies the state.
+
 ## What Planbridge manages
 
 - Stable task identity across planning boards and GitHub.
@@ -64,6 +77,8 @@ identifiers, manifest format, and verification rules.
 - Backup and version-control posture for planning state through GitHub records.
 - Reconciliation reports for missing, duplicate, or mismatched records.
 - Run logs that show what an agent read, compared, and changed.
+- API-first synchronization instead of fragile browser or desktop automation.
+- A deterministic control loop that probabilistic agents can safely use.
 - Conservative mutation gates for agent-maintained project surfaces.
 - Public-safe standards for agentic development workflows.
 
@@ -72,7 +87,9 @@ identifiers, manifest format, and verification rules.
 - Humans keep the low-friction board.
 - GitHub keeps the durable substrate.
 - Agents compare before they mutate.
+- APIs are the authority; UI automation is a fallback.
 - Every mutation is narrow, logged, and read back.
+- Probabilistic judgment proposes; deterministic checks verify.
 - Identifiers matter more than titles.
 - No-op runs stay quiet.
 - Configuration is explicit and branchable.
