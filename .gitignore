@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+logs/
+.env
+.env.*
+*.local.yaml
+*.local.yml
+

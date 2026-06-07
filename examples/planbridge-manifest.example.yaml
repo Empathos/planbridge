@@ -1,0 +1,53 @@
+# Public-safe Planbridge manifest example.
+# Replace every placeholder before running against real systems.
+
+planbridge:
+  name: example-planbridge
+  mode: read_only
+
+identity:
+  pattern: "[A-Z]{2}[0-9]\\.[0-9]{3}\\.[0-9]{3}"
+  parent_suffix: ".000"
+
+planning:
+  provider: microsoft-graph-planner
+  tenant: "${GRAPH_TENANT_ID}"
+  group_id: "00000000-0000-0000-0000-000000000000"
+  boards:
+    - key: master
+      plan_id: "planner-plan-id"
+      role: human_portfolio_board
+      stages:
+        - Triage
+        - Ready
+        - Doing
+        - Review
+        - Done
+        - Blocked
+
+github:
+  owner: "example-owner"
+  repo: "example-repo"
+  projects:
+    - key: master
+      number: 1
+      role: durable_control_surface
+      fields:
+        identifier: Identifier
+        stage: Stage
+
+logging:
+  directory: "logs/planbridge"
+  write_latest: true
+
+mutation_policy:
+  default: read_only
+  allowed:
+    - github_project_stage_update
+  stop_on:
+    - duplicate_identifier
+    - missing_identifier
+    - missing_field
+    - missing_stage_option
+    - remote_read_failure
+

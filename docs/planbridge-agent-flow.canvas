@@ -1,0 +1,121 @@
+{
+  "nodes": [
+    {
+      "id": "agent",
+      "type": "text",
+      "text": "Planbridge agent\\n\\nEntry points:\\n- manual command\\n- scheduled job\\n- CI check\\n- agent runtime\\n\\nModes:\\n- read_only\\n- apply",
+      "x": -760,
+      "y": -80,
+      "width": 300,
+      "height": 180
+    },
+    {
+      "id": "manifest",
+      "type": "file",
+      "file": "examples/planbridge-manifest.example.yaml",
+      "x": -760,
+      "y": -320,
+      "width": 320,
+      "height": 120
+    },
+    {
+      "id": "skill",
+      "type": "file",
+      "file": "skills/planbridge-sync/SKILL.md",
+      "x": -760,
+      "y": 170,
+      "width": 320,
+      "height": 120
+    },
+    {
+      "id": "planning-api",
+      "type": "text",
+      "text": "Planning API\\n\\nReads:\\n- boards/plans\\n- columns/buckets\\n- tasks/cards\\n- task metadata\\n\\nExample provider:\\nMicrosoft Graph Planner",
+      "x": -340,
+      "y": -230,
+      "width": 300,
+      "height": 170
+    },
+    {
+      "id": "human-board",
+      "type": "text",
+      "text": "Human planning board\\n\\nRole:\\nlow-friction work surface\\n\\nHumans triage, stage, and move work here.",
+      "x": 80,
+      "y": -230,
+      "width": 320,
+      "height": 150
+    },
+    {
+      "id": "github-api",
+      "type": "text",
+      "text": "GitHub API / gh CLI\\n\\nReads and writes:\\n- issues\\n- project items\\n- fields\\n- labels\\n- URLs",
+      "x": -340,
+      "y": 80,
+      "width": 300,
+      "height": 150
+    },
+    {
+      "id": "github-surface",
+      "type": "text",
+      "text": "GitHub durable surface\\n\\nIssues keep task records.\\nProjects keep technical board state.",
+      "x": 80,
+      "y": 90,
+      "width": 320,
+      "height": 140
+    },
+    {
+      "id": "identifier",
+      "type": "text",
+      "text": "Stable identifier\\n\\nExample:\\nBUCKET.PRIMARY.SUBTASK\\n\\nMatch by identifier first, not title text.",
+      "x": 510,
+      "y": -60,
+      "width": 320,
+      "height": 170
+    },
+    {
+      "id": "diff",
+      "type": "text",
+      "text": "Reconciliation diff\\n\\nDetects:\\n- missing mirrors\\n- duplicate identifiers\\n- missing identifiers\\n- stage mismatches\\n- count drift",
+      "x": 920,
+      "y": -50,
+      "width": 310,
+      "height": 180
+    },
+    {
+      "id": "logs",
+      "type": "text",
+      "text": "Run logs\\n\\nProof of what the agent read, compared, changed, and verified.",
+      "x": 1300,
+      "y": -150,
+      "width": 290,
+      "height": 130
+    },
+    {
+      "id": "mutations",
+      "type": "text",
+      "text": "Mutation gate\\n\\nOnly approved changes pass.\\nEvery write must be read back.",
+      "x": 1300,
+      "y": 80,
+      "width": 290,
+      "height": 140
+    }
+  ],
+  "edges": [
+    {"id": "e1", "fromNode": "manifest", "fromSide": "bottom", "toNode": "agent", "toSide": "top", "label": "declares surfaces"},
+    {"id": "e2", "fromNode": "skill", "fromSide": "top", "toNode": "agent", "toSide": "bottom", "label": "operator rules"},
+    {"id": "e3", "fromNode": "agent", "fromSide": "right", "toNode": "planning-api", "toSide": "left", "label": "read snapshot"},
+    {"id": "e4", "fromNode": "planning-api", "fromSide": "right", "toNode": "human-board", "toSide": "left", "label": "tasks and stages"},
+    {"id": "e5", "fromNode": "agent", "fromSide": "right", "toNode": "github-api", "toSide": "left", "label": "read snapshot"},
+    {"id": "e6", "fromNode": "github-api", "fromSide": "right", "toNode": "github-surface", "toSide": "left", "label": "issues and projects"},
+    {"id": "e7", "fromNode": "human-board", "fromSide": "right", "toNode": "identifier", "toSide": "left", "label": "extract identifier"},
+    {"id": "e8", "fromNode": "github-surface", "fromSide": "right", "toNode": "identifier", "toSide": "left", "label": "extract identifier"},
+    {"id": "e9", "fromNode": "identifier", "fromSide": "right", "toNode": "diff", "toSide": "left", "label": "compare"},
+    {"id": "e10", "fromNode": "diff", "fromSide": "right", "toNode": "logs", "toSide": "left", "label": "write proof"},
+    {"id": "e11", "fromNode": "diff", "fromSide": "right", "toNode": "mutations", "toSide": "left", "label": "approved apply"}
+  ],
+  "metadata": {
+    "version": "1.0-1.0",
+    "frontmatter": {}
+  }
+}
+
