@@ -104,6 +104,7 @@ agent can reason about the work, but the bridge verifies the state.
 │   ├── agent-operations.md
 │   ├── api-flow.md
 │   ├── architecture.md
+│   ├── graphharbor-integration.md
 │   ├── identifiers.md
 │   └── planbridge-agent-flow.canvas
 ├── examples/
@@ -112,7 +113,10 @@ agent can reason about the work, but the bridge verifies the state.
 │   │   └── aw1-projectization.json
 │   └── planbridge-manifest.example.yaml
 ├── scripts/
+│   ├── graphharbor_call.py
 │   └── planbridge_reconciler.py
+├── prompts/
+│   └── graphharbor_call.prompt.md
 └── skills/
     └── planbridge-sync/
         └── SKILL.md
@@ -133,12 +137,18 @@ python3 scripts/planbridge_reconciler.py --validate-manifest
 python3 scripts/planbridge_reconciler.py --fixture examples/fixtures/aligned.json --summary
 python3 scripts/planbridge_reconciler.py --fixture examples/fixtures/aw1-projectization.json --dry-run --summary
 python3 scripts/planbridge_reconciler.py --fixture examples/fixtures/aw1-projectization.json --apply --summary
+python3 scripts/graphharbor_call.py --message "Planbridge dry run finished" --dry-run
 ```
 
 The fixture provider is intentionally synthetic. Real deployments should supply
 provider adapters for their planning API and durable surface, then keep live
 manifests, credentials, project IDs, and proof logs in a private control-plane
 repository.
+
+Planbridge can call Microsoft GraphHarbor through a public-safe command adapter
+when a private deployment wants Teams notifications. The projects stay separate:
+Planbridge owns planning reconciliation, while GraphHarbor owns Microsoft Graph
+authorization, Teams chat IDs, message sending, and readback proof.
 
 Live credentials, private board IDs, private agent configuration, and
 environment-specific paths do not belong in this public repository.
