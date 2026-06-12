@@ -30,7 +30,7 @@ coordination layer.
 
 Planbridge uses GitHub as that shared layer. It gives agents from different
 ecosystems a common place to inspect work, preserve history, coordinate changes,
-and action tasks. In the Empathos QBrain direction, agent action can be driven
+and act on tasks. In the Empathos QBrain direction, agent action can be driven
 by extracted planning context rather than by manually duplicated task state.
 
 Planbridge is intentionally API-first. It is not a browser-use agent that clicks
